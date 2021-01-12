@@ -364,7 +364,7 @@ public class PoolWeftExecutorService
         ThreadContext ctx = ThreadContext.getContext( false );
         Map<String, Object> extractedContext = extractContext();
         load.addAndGet( collection.size() );
-        return collection.parallelStream().map( ( callable ) -> {
+        return collection.stream().map( ( callable ) -> {
             ThreadContext old = ThreadContext.setContext( ctx );
             setContext( extractedContext );
             Logger logger = LoggerFactory.getLogger( getClass() );
